@@ -1,0 +1,54 @@
+# MISP Installation Project - Ubuntu 24.04
+
+# Backup files
+*.bak
+*.backup
+*.sql
+*.tar.gz
+*.zip
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Logs
+*.log
+logs/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Test files
+test/
+testing/
+
+# Sensitive information (if any)
+secrets/
+*.key
+*.pem
+*.crt
+!configs/*.crt
+credentials.txt
+passwords.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Node
+node_modules/
