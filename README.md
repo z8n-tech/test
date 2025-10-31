@@ -1,6 +1,8 @@
-# MISP Installation Guide for Ubuntu 24.04 LTS
+# Security Enhancement for Ubuntu 24.04 LTS
 
-This project contains updated installation instructions and scripts for installing MISP (Malware Information Sharing Platform) on **Ubuntu 24.04 LTS (Noble Numbat)**.
+This project contains security tools and installation scripts for Ubuntu 24.04 LTS (Noble Numbat), including:
+- **MISP** (Malware Information Sharing Platform) - Threat intelligence sharing
+- **auditd** (Linux Audit Framework) - System auditing and compliance monitoring
 
 ## 🆕 What's New in Ubuntu 24.04 Version
 
@@ -46,6 +48,38 @@ Follow the detailed instructions in [INSTALL-ubuntu-24.04.md](./INSTALL-ubuntu-2
 - **Python 3.12 virtualenv** - For MISP modules
 - **Background workers** - For asynchronous processing
 
+## 🔍 auditd - Linux Audit Framework
+
+### Quick Installation
+
+```bash
+# Run the auditd installation script
+sudo bash scripts/install-auditd-ubuntu-24.04.sh
+```
+
+### What You Get
+
+- **System Monitoring** - Track file access, user activities, and system changes
+- **Security Auditing** - Detect unauthorized access and privilege escalation
+- **Compliance Support** - PCI-DSS, HIPAA, and CIS Benchmark compliance
+- **Automated Reports** - Daily summaries and security event tracking
+- **Helper Tools** - Easy-to-use monitoring commands
+
+### Quick Commands
+
+```bash
+# Monitor audit events
+sudo audit-monitor summary
+
+# View failed logins
+sudo audit-monitor logins
+
+# Check privileged commands
+sudo audit-monitor commands
+```
+
+For detailed installation and configuration, see [INSTALL-auditd-ubuntu-24.04.md](./INSTALL-auditd-ubuntu-24.04.md)
+
 ## 🔄 Migration from Ubuntu 22.04
 
 If you're upgrading from Ubuntu 22.04, see the [MIGRATION-22.04-to-24.04.md](./MIGRATION-22.04-to-24.04.md) guide.
@@ -56,18 +90,20 @@ If you're upgrading from Ubuntu 22.04, see the [MIGRATION-22.04-to-24.04.md](./M
 
 ```
 .
-├── README.md                           # This file
-├── INSTALL-ubuntu-24.04.md            # Detailed installation guide
-├── INSTALL-ubuntu-24.04.sh            # Installation script
-├── MIGRATION-22.04-to-24.04.md        # Migration guide
+├── README.md                                # This file
+├── INSTALL-ubuntu-24.04.md                 # MISP installation guide
+├── INSTALL-ubuntu-24.04.sh                 # MISP installation script
+├── INSTALL-auditd-ubuntu-24.04.md          # auditd installation guide
+├── MIGRATION-22.04-to-24.04.md             # Migration guide
 ├── configs/
-│   ├── apache-misp-ssl-24.04.conf     # Apache SSL configuration
-│   ├── php-8.3-misp.ini               # PHP configuration
-│   └── misp-workers.service           # Systemd service file
+│   ├── apache-misp-ssl-24.04.conf          # Apache SSL configuration
+│   ├── php-8.3-misp.ini                    # PHP configuration
+│   └── misp-workers.service                # Systemd service file
 └── scripts/
-    ├── install-php83-deps.sh          # PHP 8.3 dependencies
-    ├── install-core-deps.sh           # Core system dependencies
-    └── configure-misp.sh              # MISP configuration
+    ├── install-php83-deps.sh               # PHP 8.3 dependencies
+    ├── install-core-deps.sh                # Core system dependencies
+    ├── configure-misp.sh                   # MISP configuration
+    └── install-auditd-ubuntu-24.04.sh      # auditd installation & config
 
 ```
 
@@ -75,12 +111,14 @@ If you're upgrading from Ubuntu 22.04, see the [MIGRATION-22.04-to-24.04.md](./M
 
 After installation, follow these security best practices:
 
-1. Change default passwords immediately
-2. Configure firewall (ufw)
-3. Set up SSL certificates (Let's Encrypt recommended)
-4. Configure proper file permissions
-5. Enable SELinux/AppArmor if needed
-6. Regular system updates
+1. **Install auditd** - Enable system auditing for security monitoring
+2. Change default passwords immediately
+3. Configure firewall (ufw)
+4. Set up SSL certificates (Let's Encrypt recommended)
+5. Configure proper file permissions
+6. Enable SELinux/AppArmor if needed
+7. Regular system updates
+8. Review audit logs daily (`sudo audit-monitor summary`)
 
 ## 🐛 Troubleshooting
 
